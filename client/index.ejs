@@ -3,6 +3,9 @@
   <h1>Salve, Munde!</h1>
 </div>
 <div>
+  <% if (agentMsg) { %>
+    <p><%= agentMsg %></p>
+  <% } %>
   <% if (nonce) { %>
     <p>You're accessing this page with nonce: <%= nonce %></p>
   <% } %>

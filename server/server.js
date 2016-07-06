@@ -1,4 +1,5 @@
 "use strict"; // eslint-disable-line
+/* eslint-disable no-console */
 const express = require('express');
 const app = express();
 const server = require('http').Server(app); // eslint-disable-line
