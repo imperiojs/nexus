@@ -1,5 +1,34 @@
 <%- include('templates/header') %>
+<div id='mobile-wrap'>
+
 <div>
-  <h1>Salve, Munde!</h1>
+  <h1>Nexus (Satellite)</h1>
 </div>
+
+<div class="button-wrap">
+  <button onclick="buttonTap()">Alter Focus</button>
+</div>
+
+
+<div id='content'>
+  <% if (agentMsg) { %><p><%= agentMsg %></p><% } %>
+  <% if (paramNonce) { %>
+    <p>You're accessing this page with param nonce: <%= paramNonce %></p>
+  <% } %>
+  <% if (nonce) { %>
+    <p>Generated nonce: <%= nonce %></p>
+  <% } %>
+  <% if (connectRequests) { %>
+    <p>Acive Connect Requests: <pre><%= JSON.stringify(connectRequests, null, 2) %></pre></p>
+  <% } %>
+</div>
+
+<div id='footer'>
+
+</div>
+
+</div><!-- mobile-wrap -->
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src='./dist/imperio.min.js'></script>
+<script src='./mobile.js'></script>
 <%- include('templates/footer') %>

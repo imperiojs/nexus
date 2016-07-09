@@ -1,3 +1,25 @@
-body {
-  font-size: 100%;
+#header h1 {
+  text-align: center;
+}
+
+@media screen and (min-width: 480px) {
+  #mobile-wrap {
+    margin: 0;
+    padding: 3px;
+    font-size: 30px;
+    color: green;
+  }
+  #mobile-wrap h1 {
+    text-align: center;
+    font-size: 120px;
+  }
+  #mobile-wrap .button-wrap {
+    text-align: center;
+  }
+  #mobile-wrap button {
+    font-size: 90px;
+    background-color: silver;
+    padding: 20px 50px;
+    border-radius: 20px;
+  }
 }
