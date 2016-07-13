@@ -9,7 +9,6 @@
   <button onclick="buttonTap()">Alter Focus</button>
 </div>
 
-
 <div id='content'>
   <% if (agentMsg) { %><p><%= agentMsg %></p><% } %>
   <% if (paramNonce) { %>
@@ -21,6 +20,10 @@
   <% if (connectRequests) { %>
     <p>Acive Connect Requests: <pre><%= JSON.stringify(connectRequests, null, 2) %></pre></p>
   <% } %>
+</div>
+
+<div class="button-wrap">
+  <button onclick="killCookies()">Kill Cookies</button>
 </div>
 
 <div id='footer'>

@@ -45,6 +45,14 @@ app.get('/', imperio.init(),
 // handle nonce in URL
 app.get('/:nonce', imperio.init(),
   (req, res) => {
+    // prepare data for browser pages
+    const data = {
+      agentMsg: '',
+      paramNonce: req.params.nonce,
+      nonce: req.imperio.nonce,
+      connectRequests: imperio.activeConnectRequests,
+    };
+
     console.log('loading NONCE page');
     if (req.imperio.isDesktop) {
       data.agentMsg = 'This is a desktop with NONCE';
@@ -52,6 +60,7 @@ app.get('/:nonce', imperio.init(),
     } else if (req.imperio.isMobile) {
       data.agentMsg = 'This is a mobile with NONCE';
       res.render('./../client/mobile.ejs', data);
+      // res.redirect(301, '/');
     }
   }
 );

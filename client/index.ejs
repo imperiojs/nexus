@@ -7,16 +7,17 @@
 
 
 <div id='content'>
-  <% if (agentMsg) { %><p><%= agentMsg %></p><% } %>
-  <% if (paramNonce) { %>
-    <p>You're accessing this page with param nonce: <%= paramNonce %></p>
-  <% } %>
-  <% if (nonce) { %>
-    <p>Desktop generated nonce: <%= nonce %></p>
-  <% } %>
-  <% if (connectRequests) { %>
-    <p>Acive Connect Requests: <pre><%= JSON.stringify(connectRequests, null, 2) %></pre></p>
-  <% } %>
+  <div id='connection-data'>
+    <% if (paramNonce) { %>
+      <p>You're accessing this page with param nonce: <%= paramNonce %></p>
+    <% } %>
+    <% if (nonce) { %>
+      <p>Desktop generated nonce: <%= nonce %></p>
+    <% } %>
+    <div id='open-connections'></div>
+  </div>
+
+  <div id='satellites'></div>
 </div>
 
 

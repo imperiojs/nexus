@@ -2,6 +2,26 @@
   text-align: center;
 }
 
+#content {
+  display: flex;
+  padding: 30px;
+}
+#connection-data {
+  margin: 0 20px;
+}
+#satellites {
+  margin: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.satellite {
+  height: 200px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 15px;
+  background-color: lightblue;
+}
+
 @media screen and (min-width: 480px) {
   #mobile-wrap {
     margin: 0;

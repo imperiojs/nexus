@@ -1,5 +1,6 @@
-imperio.desktopRoomSetup(imperio.socket, imperio.room);
-
+imperio.desktopRoomSetup(imperio.socket, imperio.room, createSatelliteBox);
+imperio.desktopRoomUpdate(imperio.socket, createSatelliteBox);
+imperio.nonceTimeoutUpdate(imperio.socket, updateTimeouts);
 imperio.desktopTapHandler(imperio.socket, alterFocus);
 
 function alterFocus() {
@@ -11,3 +12,40 @@ function alterFocus() {
   const focusHeader = document.getElementById('header');
   focusHeader.style.color = randomColor;
 }
+
+function updateTimeouts(nonceTimeouts) {
+  var html = '';
+  if (nonceTimeouts.length === 0) {
+    html += "<p>No active connect requests.</p>"
+  } else {
+    for (let timeoutString of nonceTimeouts) {
+      html += '<ul>';
+      html += '<li>'+timeoutString+'</li>';
+      html += '</ul>';
+    }
+  }
+  var openConnections = document.getElementById('open-connections');
+  openConnections.innerHTML = html;
+}
+
+function createSatelliteBox(roomData) {
+  var html = '';
+
+  if (roomData && roomData.hasOwnProperty('sockets')) {
+    for (var socket in roomData.sockets) {
+      html += "<div class='satellite'>"+socket+"</div>";
+    }
+  }
+
+  var satellites = document.getElementById('satellites');
+  satellites.innerHTML = html;
+  console.log('satellite created: ', roomData)
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  console.log('request nonce setInterval called');
+  imperio.requestNonceTimeout(imperio.socket, imperio.room);
+  setInterval(() => {
+    imperio.requestNonceTimeout(imperio.socket, imperio.room);
+  }, 2000);
+});
