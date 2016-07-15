@@ -1,5 +1,32 @@
 <%- include('templates/header') %>
-<div>
-  <h1>Salve, Munde!</h1>
+<div id="desktop-wrap">
+
+<div id='header'>
+  <h1>Nexus (Focus)</h1>
 </div>
+
+
+<div id='content'>
+  <div id='connection-data'>
+    <% if (paramNonce) { %>
+      <p>You're accessing this page with param nonce: <%= paramNonce %></p>
+    <% } %>
+    <% if (nonce) { %>
+      <p>Desktop generated nonce: <%= nonce %></p>
+    <% } %>
+    <div id='open-connections'></div>
+  </div>
+
+  <div id='satellites'></div>
+</div>
+
+
+<div id='footer'>
+
+</div>
+
+</div><!-- desktop-wrap -->
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src='./dist/imperio.js'></script>
+<script src='./desktop.js'></script>
 <%- include('templates/footer') %>

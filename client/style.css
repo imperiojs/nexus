@@ -1,0 +1,50 @@
+#header h1 {
+  text-align: center;
+}
+
+#content {
+  display: flex;
+  padding: 30px;
+}
+#connection-data {
+  margin: 0 20px;
+}
+#satellites {
+  margin: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.satellite {
+  height: 200px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 15px;
+  background-color: lightblue;
+  text-align: center;
+}
+
+#mobile-content {
+  
+}
+
+@media screen and (min-width: 480px) {
+  #mobile-wrap {
+    margin: 0;
+    padding: 3px;
+    font-size: 30px;
+    color: green;
+  }
+  #mobile-wrap h1 {
+    text-align: center;
+    font-size: 120px;
+  }
+  #mobile-wrap .button-wrap {
+    text-align: center;
+  }
+  #mobile-wrap button {
+    font-size: 90px;
+    background-color: silver;
+    padding: 20px 50px;
+    border-radius: 20px;
+  }
+}
