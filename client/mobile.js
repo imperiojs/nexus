@@ -1,7 +1,9 @@
-imperio.mobileRoomSetup(imperio.socket, imperio.room, function(socket) {
-  var rooms = socket.rooms || 'no rooms';
-  console.log('ROOMS AFTER MOBILE ROOM SETUP: ', socket.rooms);
+imperio.mobileRoomSetup(function(socket) {
+  var rooms = imperio.socket.rooms || 'no rooms';
+  console.log('ROOMS AFTER MOBILE ROOM SETUP: ', rooms);
 });
+
+imperio.webRTCConnect();
 
 function buttonTap() {
   console.log('buttonTap invoked');

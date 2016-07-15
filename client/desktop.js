@@ -1,7 +1,6 @@
 imperio.desktopRoomSetup(imperio.socket, imperio.room, createSatelliteBox);
 imperio.desktopRoomUpdate(imperio.socket, createSatelliteBox);
 imperio.nonceTimeoutUpdate(imperio.socket, updateTimeouts);
-imperio.desktopTapHandler(imperio.socket, alterFocus);
 
 function alterFocus() {
   console.log('alterFocus invoked');
@@ -52,3 +51,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     imperio.requestNonceTimeout(imperio.socket, imperio.room);
   }, 1000);
 });
+
+imperio.webRTCConnect();
+imperio.desktopTapHandler(imperio.socket, alterFocus);
