@@ -20,6 +20,11 @@
   margin: 10px;
   border-radius: 15px;
   background-color: lightblue;
+  text-align: center;
+}
+
+#mobile-content {
+  
 }
 
 @media screen and (min-width: 480px) {

@@ -33,7 +33,10 @@ function createSatelliteBox(roomData) {
 
   if (roomData && roomData.hasOwnProperty('sockets')) {
     for (var socket in roomData.sockets) {
-      html += "<div class='satellite'>"+socket+"</div>";
+      html += "<div class='satellite'>";
+      html += "<p>"+socket+"</p>";
+      html += "<p>"+roomData.sockets[socket]+"</p>";
+      html += "</div>";
     }
   }
 
@@ -47,5 +50,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
   imperio.requestNonceTimeout(imperio.socket, imperio.room);
   setInterval(() => {
     imperio.requestNonceTimeout(imperio.socket, imperio.room);
-  }, 2000);
+  }, 1000);
 });

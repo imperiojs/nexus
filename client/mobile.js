@@ -5,7 +5,7 @@ imperio.mobileRoomSetup(imperio.socket, imperio.room, function(socket) {
 
 function buttonTap() {
   console.log('buttonTap invoked');
-  return imperio.mobileTapShare(imperio.socket, imperio.room);
+  imperio.mobileTapShare(imperio.socket, imperio.room);
 }
 
 function killCookies() {

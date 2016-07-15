@@ -32,11 +32,12 @@ app.get('/', imperio.init(),
       connectRequests: imperio.activeConnectRequests,
     };
 
-    console.log('loading ROOT page');
     if (req.imperio.isDesktop) {
+      console.log('loading ROOT page (Desktop)');
       data.agentMsg = 'This is a desktop';
       res.render('./../client/index.ejs', data);
     } else if (req.imperio.isMobile) {
+      console.log('loading ROOT page (Mobile)');
       data.agentMsg = 'This is a mobile';
       res.render('./../client/mobile.ejs', data);
     }
@@ -45,6 +46,9 @@ app.get('/', imperio.init(),
 // handle nonce in URL
 app.get('/:nonce', imperio.init(),
   (req, res) => {
+    // destroy room cookie, if there is one, since we want to join a new room
+    //   if we're visiting a new nonce page
+
     // prepare data for browser pages
     const data = {
       agentMsg: '',
@@ -53,7 +57,7 @@ app.get('/:nonce', imperio.init(),
       connectRequests: imperio.activeConnectRequests,
     };
 
-    console.log('loading NONCE page');
+    console.log(`loading NONCE page: ${req.params.nonce}`);
     if (req.imperio.isDesktop) {
       data.agentMsg = 'This is a desktop with NONCE';
       res.render('./../client/index.ejs', data);

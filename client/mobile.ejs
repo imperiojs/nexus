@@ -9,7 +9,7 @@
   <button onclick="buttonTap()">Alter Focus</button>
 </div>
 
-<div id='content'>
+<div id='mobile-content'>
   <% if (agentMsg) { %><p><%= agentMsg %></p><% } %>
   <% if (paramNonce) { %>
     <p>You're accessing this page with param nonce: <%= paramNonce %></p>
@@ -20,6 +20,7 @@
   <% if (connectRequests) { %>
     <p>Acive Connect Requests: <pre><%= JSON.stringify(connectRequests, null, 2) %></pre></p>
   <% } %>
+
 </div>
 
 <div class="button-wrap">
@@ -32,6 +33,6 @@
 
 </div><!-- mobile-wrap -->
 <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
-<script src='./dist/imperio.min.js'></script>
+<script src='./dist/imperio.js'></script>
 <script src='./mobile.js'></script>
 <%- include('templates/footer') %>
