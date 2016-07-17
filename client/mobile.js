@@ -2,12 +2,12 @@ imperio.mobileRoomSetup(function(socket) {
   var rooms = imperio.socket.rooms || 'no rooms';
   console.log('ROOMS AFTER MOBILE ROOM SETUP: ', rooms);
 });
-
+imperio.mobileAccelShare.noGravity();
 imperio.webRTCConnect();
 
 function buttonTap() {
   console.log('buttonTap invoked');
-  imperio.mobileTapShare(imperio.socket, imperio.room);
+  imperio.mobileTapShare();
 }
 
 function killCookies() {

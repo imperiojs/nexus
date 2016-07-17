@@ -54,3 +54,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 imperio.webRTCConnect();
 imperio.desktopTapHandler(imperio.socket, alterFocus);
+imperio.desktopAccelHandler(accelObject => {
+  if (accelObject) {
+    var accData = document.getElementById('acceleration');
+    accData.innerHTML = `x: ${accelObject.x}, y: ${accelObject.y}, z: ${accelObject.z}`;
+  }
+});
