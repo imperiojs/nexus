@@ -1,6 +1,8 @@
-imperio.desktopRoomSetup(imperio.socket, imperio.room, createSatelliteBox);
-imperio.desktopRoomUpdate(imperio.socket, createSatelliteBox);
-imperio.nonceTimeoutUpdate(imperio.socket, updateTimeouts);
+imperio.desktopRoomSetup(createSatelliteBox);
+imperio.desktopRoomUpdate(createSatelliteBox);
+imperio.nonceTimeoutUpdate(updateTimeouts);
+let dataPoints;
+let chart;
 
 function alterFocus() {
   console.log('alterFocus invoked');
@@ -46,17 +48,57 @@ function createSatelliteBox(roomData) {
 
 document.addEventListener("DOMContentLoaded", function(event) {
   console.log('request nonce setInterval called');
-  imperio.requestNonceTimeout(imperio.socket, imperio.room);
+  imperio.requestNonceTimeout();
   setInterval(() => {
-    imperio.requestNonceTimeout(imperio.socket, imperio.room);
+    imperio.requestNonceTimeout();
   }, 1000);
 });
 
+var connectType = document.getElementById('connectionType');
+setInterval(() => {
+  connectType.innerHTML = `connected via ${imperio.connectionType}`;
+}, 500);
+
 imperio.webRTCConnect();
-imperio.desktopTapHandler(imperio.socket, alterFocus);
-imperio.desktopAccelHandler(accelObject => {
-  if (accelObject) {
-    var accData = document.getElementById('acceleration');
-    accData.innerHTML = `x: ${accelObject.x}, y: ${accelObject.y}, z: ${accelObject.z}`;
-  }
-});
+imperio.desktopTapHandler(alterFocus);
+imperio.desktopAccelHandler(updateChart);
+
+window.onload = function () {
+// initial values of dataPoints
+  dataPoints = [
+    { label: 'X', y: 0 },
+    { label: 'Y', y: 0 },
+    { label: 'Z', y: 0 },
+  ];
+  chart = new CanvasJS.Chart("chartContainer",{
+    theme: 'theme2',
+    title: {
+      text: 'Device Acceleration Data',
+    },
+    axisY: {
+      title: 'Accleration Including Gravity',
+    },
+    legend: {
+      verticalAlign: 'top',
+      horizontalAlign: 'centre',
+      fontSize: 18,
+    },
+    data: [{
+      type: 'column',
+      showInLegend: true,
+      legendMarkerType: 'none',
+      legendText: 'Acceleration Data from connected device',
+      indexLabel: '{y}',
+      dataPoints,
+    }],
+  });
+// renders initial chart
+  chart.render();
+};
+
+function updateChart(accelObject) {
+  dataPoints[0].y = accelObject.x;
+  dataPoints[1].y = accelObject.y;
+  dataPoints[2].y = accelObject.z;
+  chart.render();
+}

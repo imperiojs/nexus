@@ -2,13 +2,18 @@ imperio.mobileRoomSetup(function(socket) {
   var rooms = imperio.socket.rooms || 'no rooms';
   console.log('ROOMS AFTER MOBILE ROOM SETUP: ', rooms);
 });
-imperio.mobileAccelShare.noGravity();
+imperio.mobileAccelShare.gravity();
 imperio.webRTCConnect();
 
 function buttonTap() {
   console.log('buttonTap invoked');
   imperio.mobileTapShare();
 }
+
+var connectType = document.getElementById('connectionType');
+setInterval(() => {
+  connectType.innerHTML = `connected via ${imperio.connectionType}`;
+}, 500);
 
 function killCookies() {
   function delete_cookie( name ) {
